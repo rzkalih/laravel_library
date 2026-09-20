@@ -11,7 +11,30 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = [
+            [
+                'nama' => 'Fiksi',
+                'deskripsi' => 'Buku yang berisi cerita rekaan atau imajinasi.'
+            ],
+            [
+                'nama' => 'Pendidikan',
+                'deskripsi' => 'Buku yang berkaitan dengan pembelajaran dan pendidikan.'
+            ],
+            [
+                'nama' => 'Teknologi',
+                'deskripsi' => 'Buku yang membahas teknologi dan perkembangan digital.'
+            ],
+            [
+                'nama' => 'Sejarah',
+                'deskripsi' => 'Buku yang membahas peristiwa dan sejarah masa lalu.'
+            ],
+            [
+                'nama' => 'Novel',
+                'deskripsi' => 'Buku cerita dengan bentuk karya sastra prosa.'
+            ]
+        ];
+
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -35,7 +58,6 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**

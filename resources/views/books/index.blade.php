@@ -1,24 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('content')
 
-<body>
-    <h1>daftar buku</h1>
+<h2>Daftar Buku</h2>
 
-    <p>Sistem informasi perpustakaan</p>
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Judul</th>
+            <th>Penulis</th>
+            <th>Tahun Terbit</th>
+        </tr>
+    </thead>
 
-    <ul>
+    <tbody>
         @foreach ($books as $book)
-        <li>
-            <strong>{{ $book['judul'] }}</strong> - {{ $book['penulis'] }} ({{ $book['tahun_terbit'] }})
-        </li>
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $book['judul'] }}</td>
+            <td>{{ $book['penulis'] }}</td>
+            <td>{{ $book['tahun_terbit'] }}</td>
+        </tr>
         @endforeach
-    </ul>
-</body>
+    </tbody>
+</table>
 
-</html>
+@endsection

@@ -14,26 +14,31 @@ class BooksController extends Controller
     {
         $books = [
             [
+                'id' => 1,
                 'judul' => 'Laskar Pelangi',
                 'penulis' => 'Andrea Hirata',
                 'tahun_terbit' => 2005
             ],
             [
+                'id' => 2,
                 'judul' => 'Bumi',
                 'penulis' => 'Tere Liye',
                 'tahun_terbit' => 2014
             ],
             [
+                'id' => 3,
                 'judul' => 'Negeri 5 Menara',
                 'penulis' => 'Ahmad Fuadi',
                 'tahun_terbit' => 2009
             ],
             [
+                'id' => 4,
                 'judul' => 'Dilan 2050',
                 'penulis' => 'Pidi Baiq',
                 'tahun_terbit' => 1991
             ],
             [
+                'id' => 5,
                 'judul' => 'Perahu Kertas',
                 'penulis' => 'Dee Lestari',
                 'tahun_terbit' => 2009
@@ -64,8 +69,44 @@ class BooksController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $books = [
+            [
+                'id' => 1,
+                'judul' => 'Laskar Pelangi',
+                'penulis' => 'Andrea Hirata',
+                'tahun_terbit' => 2005
+            ],
+            [
+                'id' => 2,
+                'judul' => 'Bumi',
+                'penulis' => 'Tere Liye',
+                'tahun_terbit' => 2014
+            ],
+            [
+                'id' => 3,
+                'judul' => 'Negeri 5 Menara',
+                'penulis' => 'Ahmad Fuadi',
+                'tahun_terbit' => 2009
+            ],
+            [
+                'id' => 4,
+                'judul' => 'Dilan 1990',
+                'penulis' => 'Pidi Baiq',
+                'tahun_terbit' => 2014
+            ],
+            [
+                'id' => 5,
+                'judul' => 'Perahu Kertas',
+                'penulis' => 'Dee Lestari',
+                'tahun_terbit' => 2009
+            ]
+        ];
+
+        $book = collect($books)->firstWhere('id', $id);
+
+        return view('books.show', compact('book'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

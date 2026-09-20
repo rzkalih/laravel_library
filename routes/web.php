@@ -16,3 +16,4 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/buku', [BooksController::class, 'index']);
 Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/member', [MemberController::class, 'index']);
+Route::get('/buku/{id}', [BooksController::class, 'show']);

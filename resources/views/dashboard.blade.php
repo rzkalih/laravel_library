@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{ $judul }}</title>
-</head>
+@section('content')
 
-<body>
+<h2>{{ $judul }}</h2>
 
-    <h1>{{ $judul }}</h1>
+<p>{{ $deskripsi }}</p>
 
-    <p>{{ $deskripsi }}</p>
+<h3>Informasi Perpustakaan</h3>
 
-    <hr>
+<p>Jumlah Buku: {{ $jumlahBuku }}</p>
 
-    <h2>Informasi Perpustakaan</h2>
+<p>Jumlah Member: {{ $jumlahMember }}</p>
 
-    <p>Jumlah Buku: {{ $jumlahBuku }}</p>
+<p>Jumlah Kategori: {{ $jumlahKategori }}</p>
 
-    <p>Jumlah Member: {{ $jumlahMember }}</p>
-
-    <p>Jumlah Kategori: {{ $jumlahKategori }}</p>
-
-</body>
-
-</html>
+@endsection
