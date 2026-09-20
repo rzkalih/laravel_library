@@ -4,11 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\DashboardController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // Route::get('/buku', function () {
 //     return view('books.index');
