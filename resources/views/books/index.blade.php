@@ -11,6 +11,14 @@
     <h1>daftar buku</h1>
 
     <p>Sistem informasi perpustakaan</p>
+
+    <ul>
+        @foreach ($books as $book)
+        <li>
+            <strong>{{ $book['judul'] }}</strong> - {{ $book['penulis'] }} ({{ $book['tahun_terbit'] }})
+        </li>
+        @endforeach
+    </ul>
 </body>
 
 </html>

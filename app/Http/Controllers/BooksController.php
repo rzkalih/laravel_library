@@ -12,7 +12,35 @@ class BooksController extends Controller
      */
     public function index()
     {
-        return view('books.index');
+        $books = [
+            [
+                'judul' => 'Laskar Pelangi',
+                'penulis' => 'Andrea Hirata',
+                'tahun_terbit' => 2005
+            ],
+            [
+                'judul' => 'Bumi',
+                'penulis' => 'Tere Liye',
+                'tahun_terbit' => 2014
+            ],
+            [
+                'judul' => 'Negeri 5 Menara',
+                'penulis' => 'Ahmad Fuadi',
+                'tahun_terbit' => 2009
+            ],
+            [
+                'judul' => 'Dilan 2050',
+                'penulis' => 'Pidi Baiq',
+                'tahun_terbit' => 1991
+            ],
+            [
+                'judul' => 'Perahu Kertas',
+                'penulis' => 'Dee Lestari',
+                'tahun_terbit' => 2009
+            ]
+        ];
+
+        return view('books.index', compact('books'));
     }
 
     /**
