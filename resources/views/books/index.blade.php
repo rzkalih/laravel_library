@@ -11,6 +11,7 @@
             <th>Judul</th>
             <th>Penulis</th>
             <th>Tahun Terbit</th>
+            <th>Stok</th>
         </tr>
     </thead>
 
@@ -18,9 +19,10 @@
         @foreach ($books as $book)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $book['judul'] }}</td>
-            <td>{{ $book['penulis'] }}</td>
-            <td>{{ $book['tahun_terbit'] }}</td>
+            <td>{{ $book->judul }}</td>
+            <td>{{ $book->penulis }}</td>
+            <td>{{ $book->tahun_terbit }}</td>
+            <td>{{ $book->stok }}</td>
         </tr>
         @endforeach
     </tbody>

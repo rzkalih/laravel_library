@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 
 class BooksController extends Controller
@@ -12,38 +13,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = [
-            [
-                'id' => 1,
-                'judul' => 'Laskar Pelangi',
-                'penulis' => 'Andrea Hirata',
-                'tahun_terbit' => 2005
-            ],
-            [
-                'id' => 2,
-                'judul' => 'Bumi',
-                'penulis' => 'Tere Liye',
-                'tahun_terbit' => 2014
-            ],
-            [
-                'id' => 3,
-                'judul' => 'Negeri 5 Menara',
-                'penulis' => 'Ahmad Fuadi',
-                'tahun_terbit' => 2009
-            ],
-            [
-                'id' => 4,
-                'judul' => 'Dilan 2050',
-                'penulis' => 'Pidi Baiq',
-                'tahun_terbit' => 1991
-            ],
-            [
-                'id' => 5,
-                'judul' => 'Perahu Kertas',
-                'penulis' => 'Dee Lestari',
-                'tahun_terbit' => 2009
-            ]
-        ];
+        $books = Book::all();
 
         return view('books.index', compact('books'));
     }
