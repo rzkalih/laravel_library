@@ -23,7 +23,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -31,7 +31,15 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book::create([
+            'judul' => $request->judul,
+            'penulis' => $request->penulis,
+            'tahun_terbit' => $request->tahun_terbit,
+            'stok' => $request->stok,
+        ]);
+
+        return redirect()->route('books.index')
+            ->with('success', 'Buku berhasil ditambahkan.');
     }
 
     /**
@@ -83,7 +91,9 @@ class BooksController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        return view('books.edit', compact('book'));
     }
 
     /**
@@ -91,7 +101,17 @@ class BooksController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        $book->update([
+            'judul' => $request->judul,
+            'penulis' => $request->penulis,
+            'tahun_terbit' => $request->tahun_terbit,
+            'stok' => $request->stok,
+        ]);
+
+        return redirect()->route('books.index')
+            ->with('success', 'Buku berhasil diperbarui.');
     }
 
     /**
@@ -99,6 +119,10 @@ class BooksController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('books.index')
+            ->with('success', 'Buku berhasil dihapus.');
     }
 }
