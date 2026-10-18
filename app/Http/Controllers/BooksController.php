@@ -31,12 +31,14 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create([
-            'judul' => $request->judul,
-            'penulis' => $request->penulis,
-            'tahun_terbit' => $request->tahun_terbit,
-            'stok' => $request->stok,
+        $validated = $request->validate([
+            'judul' => 'required|string|unique:books,judul|max:255',
+            'penulis' => 'required|string|max:255',
+            'tahun_terbit' => 'required|integer|digits:4|min:1900',
+            'stok' => 'required|integer|min:0|max:300',
         ]);
+
+        Book::create($validated);
 
         return redirect()->route('books.index')
             ->with('success', 'Buku berhasil ditambahkan.');

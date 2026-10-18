@@ -31,14 +31,14 @@
         Tahun Terbit:
         <input type="number" name="tahun_terbit"
             value="{{ old('tahun_terbit') }}"
-            min="1000" max="9999" required>
+            required>
     </p>
 
     <p>
         Stok:
         <input type="number" name="stok"
             value="{{ old('stok', 0) }}"
-            min="0" required>
+            required>
     </p>
 
     <button type="submit">Simpan</button>
