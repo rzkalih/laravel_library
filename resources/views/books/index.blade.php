@@ -25,10 +25,12 @@
         <tr>
             <th>No</th>
             <th>Judul</th>
-            <th>Penulis</th>
+            <th>PenulBelum ada kategoriis</th>
             <th>Tahun Terbit</th>
             <th>Stok</th>
+            <th>Kategori</th>
             <th>Aksi</th>
+
         </tr>
     </thead>
 
@@ -40,6 +42,7 @@
             <td>{{ $book->penulis }}</td>
             <td>{{ $book->tahun_terbit }}</td>
             <td>{{ $book->stok }}</td>
+            <td>{{ $book->category?->name ?? 'Belum ada kategori'}}</td>
             <td>
                 <a href="{{ route('books.edit', $book->id) }}">
                     Edit

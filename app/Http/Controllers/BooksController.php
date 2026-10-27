@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
-
+use Faker\Guesser\Name;
+use App\Models\category;
 
 class BooksController extends Controller
 {
@@ -13,7 +14,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::with('category')->get();
 
         return view('books.index', compact('books'));
     }
@@ -23,7 +24,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $categories = Category::orderBy('name')->get();
+        return view('books.create', compact('categories'));
     }
 
     /**
@@ -36,6 +38,7 @@ class BooksController extends Controller
             'penulis' => 'required|string|max:255',
             'tahun_terbit' => 'required|integer|digits:4|min:1900',
             'stok' => 'required|integer|min:0|max:300',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         Book::create($validated);
@@ -93,9 +96,10 @@ class BooksController extends Controller
      */
     public function edit(string $id)
     {
+        $categories = Category::orderBy('name')->get();
         $book = Book::findOrFail($id);
 
-        return view('books.edit', compact('book'));
+        return view('books.edit', compact('book', 'categories'));
     }
 
     /**
@@ -110,6 +114,7 @@ class BooksController extends Controller
             'penulis' => $request->penulis,
             'tahun_terbit' => $request->tahun_terbit,
             'stok' => $request->stok,
+            'category_id' => $request->category_id,
         ]);
 
         return redirect()->route('books.index')
